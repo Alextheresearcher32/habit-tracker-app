@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gradient-to-br from-orange-50 via-rose-50 to-pink-50 text-gray-900 font-body;
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/70 backdrop-blur-md border border-white/50 shadow-lg;
+  }
+  
+  .btn-primary {
+    @apply bg-gradient-to-r from-rose-400 to-pink-400 hover:from-rose-500 hover:to-pink-500 
+           text-white font-medium px-6 py-3 rounded-full shadow-md 
+           transition-all duration-200 active:scale-95;
+  }
+  
+  .btn-secondary {
+    @apply bg-white/80 hover:bg-white text-gray-700 font-medium px-6 py-3 
+           rounded-full shadow-md border border-gray-200
+           transition-all duration-200 active:scale-95;
+  }
+
+  .habit-checkbox {
+    @apply w-6 h-6 rounded-full border-2 border-rose-300 
+           flex items-center justify-center cursor-pointer
+           transition-all duration-200 hover:border-rose-400;
+  }
+
+  .habit-checkbox.checked {
+    @apply bg-gradient-to-br from-rose-400 to-pink-400 border-rose-400;
+  }
+
+  .mood-emoji {
+    @apply text-4xl cursor-pointer transition-all duration-200 
+           hover:scale-110 active:scale-95;
+  }
+
+  .mood-emoji.selected {
+    @apply scale-125 drop-shadow-lg;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-rose-500 to-pink-500 bg-clip-text text-transparent;
+  }
+
+  .animate-draw {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: draw 2s ease-out forwards;
+  }
+
+  @keyframes draw {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #fb7185, #f472b6);
+  border-radius: 4px;
+}
+
+/* Calendar grid animation */
+.calendar-day {
+  transition: all 0.2s ease;
+}
+
+.calendar-day:hover {
+  transform: scale(1.1);
+}
+
+/* Timer ring animation */
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.rotating {
+  animation: rotate 60s linear infinite;
+}
